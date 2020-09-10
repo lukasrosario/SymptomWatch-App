@@ -1,18 +1,23 @@
-#Script takes the city and state and returns the temperature and humidty 
+#Script takes the city and state  and returns the temperature and humidty 
 #List of city ID city.list.json.gz can be downloaded here http://bulk.openweathermap.org/sample/
 
 #Sample call: $ weather.py Boston MA 
 
+from dotenv import load_dotenv
+load_dotenv()
+import os
 import requests
 import json
 import sys
+
+api_key = os.environ.get('weather_api_key')
 
 
 #city = sys.argv[1]
 #state = sys.argv[2]
 
 #grabs city state and country from user
-parameters = 'q=' + sys.argv[1] + ',' + sys.argv[2] + ',US&units=imperial&appid=135a11070d877103cee5fe57de8d3f2b'
+parameters = 'q=' + sys.argv[1] + ',' + sys.argv[2] + ',US&units=imperial&appid=' + api_key
 
 #call api with city, state
 response = requests.get("http://api.openweathermap.org/data/2.5/weather?" + parameters)
