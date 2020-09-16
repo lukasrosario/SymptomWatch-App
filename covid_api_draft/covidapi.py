@@ -4,18 +4,6 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 
-
-config = {
-	"apiKey": "AIzaSyAB8dckJ5Vnp0nu8HjkkM-TebQhK-BUjdM",
-    "authDomain": "bu-covid-tracker.firebaseapp.com",
-    "databaseURL": "https://bu-covid-tracker.firebaseio.com",
-    "projectId": "bu-covid-tracker",
-    "storageBucket": "bu-covid-tracker.appspot.com",
-    "messagingSenderId": "854257212533",
-    "appId": "1:854257212533:web:f4020ec38beb072b162c3c",
-    "measurementId": "G-MMS2VLQ5BW"
-}
-
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
