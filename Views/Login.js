@@ -8,7 +8,10 @@ import {
   Keyboard
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-community/google-signin';
+import {
+  GoogleSignin,
+  GoogleSigninButton
+} from '@react-native-community/google-signin';
 
 import WideButton from '../Components/WideButton';
 import { colors } from '../assets/colors';
@@ -21,7 +24,10 @@ GoogleSignin.configure({
 const logo = require('../assets/img/logo-transparent.png');
 
 export default Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   async function onGoogleButtonPress() {
+    setIsLoading(true);
     try {
       // Get the users ID token
       const { idToken } = await GoogleSignin.signIn();
@@ -30,7 +36,7 @@ export default Login = () => {
       // Sign-in the user with the credential
       auth().signInWithCredential(googleCredential);
     } catch (error) {
-      console.log('error big man', error);
+      setIsLoading(false);
     }
   }
 
@@ -41,12 +47,11 @@ export default Login = () => {
         <View style={styles.watchContainer}>
           <Text style={styles.watch}>Symptom Watch</Text>
         </View>
-        <WideButton
-          onPress={() => onGoogleButtonPress()}
-          text="Log In"
-          containerStyle={styles.buttonContainer}
-          buttonColor={{ backgroundColor: colors.secondary }}
-          textColor={{ color: colors.primary }}
+        <GoogleSigninButton
+          size={GoogleSigninButton.Size.Wide}
+          color={GoogleSigninButton.Color.Light}
+          onPress={onGoogleButtonPress}
+          disabled={isLoading}
         />
       </View>
     </TouchableWithoutFeedback>

@@ -5,14 +5,13 @@ import auth from '@react-native-firebase/auth';
 import { colors } from './assets/colors';
 
 import Login from './Views/Login';
-import Navigator from './Navigation/Routes';
+import Navigator from './Navigation/Navigator';
 
 export default app = () => {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
   function onAuthStateChanged(user) {
-    console.log('change', user);
     setUser(user);
     if (initializing) setInitializing(false);
   }
@@ -30,10 +29,8 @@ export default app = () => {
     );
 
   if (!user) {
-    console.log('returning this');
     return <Login />;
   } else {
-    console.log('returning that');
     return <Navigator />;
   }
 };

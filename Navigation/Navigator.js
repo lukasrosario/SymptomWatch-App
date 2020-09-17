@@ -4,32 +4,10 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import TabBar from '../Components/TabBar';
-
-import Login from '../Views/Login';
-import Signup from '../Views/Signup';
-
+import AuthLoading from './AuthLoading';
+import Welcome from '../Views/Welcome';
 import Upload from '../Views/Upload';
 import History from '../Views/History';
-
-const AuthStack = createBottomTabNavigator(
-  {
-    login: {
-      screen: Login,
-      navigationOptions: {
-        tabBarLabel: 'Log In'
-      }
-    },
-    signup: {
-      screen: Signup,
-      navigationOptions: {
-        tabBarLabel: 'Sign Up'
-      }
-    }
-  },
-  {
-    tabBarComponent: TabBar
-  }
-);
 
 const AppStack = createBottomTabNavigator(
   {
@@ -47,11 +25,12 @@ const AppStack = createBottomTabNavigator(
 
 const Navigator = createSwitchNavigator(
   {
-    auth: AuthStack,
+    loading: AuthLoading,
+    welcome: Welcome,
     app: AppStack
   },
   {
-    initialRouteName: 'app'
+    initialRouteName: 'loading'
   }
 );
 
