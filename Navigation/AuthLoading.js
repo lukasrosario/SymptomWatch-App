@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
-import { colors } from './assets/colors';
+import { colors } from '../assets/colors';
 
-import Login from './Views/Login';
-import Navigator from './Navigation/Routes';
-
-export default app = () => {
+export default AuthLoading = (props) => {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
   function onAuthStateChanged(user) {
-    console.log('change', user);
     setUser(user);
     if (initializing) setInitializing(false);
   }
@@ -30,11 +26,9 @@ export default app = () => {
     );
 
   if (!user) {
-    console.log('returning this');
-    return <Login />;
+    props.navigation.navigate('login');
   } else {
-    console.log('returning that');
-    return <Navigator />;
+    props.navigation.navigate('signup');
   }
 };
 
