@@ -20,8 +20,9 @@ export default Welcome = (props) => {
 
   async function submitPhone() {
     const currentUser = auth().currentUser;
+    const uid = currentUser.uid;
     try {
-      await firestore().collection('Users').add({
+      await firestore().collection('Users').doc(uid).set({
         name: currentUser.displayName,
         email: currentUser.email,
         phoneNumber: phoneNumber

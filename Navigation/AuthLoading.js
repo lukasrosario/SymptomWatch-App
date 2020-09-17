@@ -6,17 +6,20 @@ import firestore from '@react-native-firebase/firestore';
 import { colors } from '../assets/colors';
 
 export default AuthLoading = (props) => {
-  const email = auth().currentUser.email;
+  const uid = auth().currentUser.uid;
 
   firestore()
     .collection('Users')
-    .where('email', '==', email)
+    .doc(uid)
     .get()
-    .then((querySnapshot) => {
-      const phoneNumber = querySnapshot.docs[0]._data.phoneNumber;
-      props.navigation.navigate('app');
+    .then((documentSnapshot) => {
+      if (documentSnapshot.exists) {
+        props.navigation.navigate('app');
+      } else {
+        props.navigation.navigate('welcome');
+      }
     })
-    .catch((error) => {
+    .catch(() => {
       props.navigation.navigate('welcome');
     });
 

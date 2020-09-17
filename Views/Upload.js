@@ -1,14 +1,35 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import Swiper from 'react-native-swiper';
 
+import Thanks from './Thanks';
 import SurveyQuestion from '../Components/SurveyQuestion';
 import WideButton from '../Components/WideButton';
 
 import { colors } from '../assets/colors';
 
 export default Upload = () => {
+  const [uploaded, setUploaded] = useState(false);
+  const uid = auth().currentUser.uid;
+  firestore()
+    .collection('Users')
+    .doc(uid)
+    .get()
+    .then((documentSnapshot) => {
+      const lastUpload = documentSnapshot._data.lastUpload
+        .toDate()
+        .toDateString();
+      const currentTime = firestore()
+        ._config.statics.Timestamp.now()
+        .toDate()
+        .toDateString();
+      if (currentTime == lastUpload) {
+        setUploaded(true);
+      }
+    });
+
   const swiper = React.useRef(null);
   const handleNext = () => {
     if (swiper && swiper.current) {
@@ -26,6 +47,24 @@ export default Upload = () => {
       handleNext();
     }
   }, [fever, cough, breath]);
+
+  function uploadSymptoms() {
+    const timestamp = firestore()._config.statics.FieldValue.serverTimestamp();
+    firestore().collection('Symptoms').add({
+      uid: uid,
+      createdAt: timestamp,
+      fever: fever,
+      cough: cough,
+      breath: breath,
+      throat: throat
+    });
+    firestore().collection('Users').doc(uid).update({ lastUpload: timestamp });
+    setUploaded(true);
+  }
+
+  if (uploaded) {
+    return <Thanks />;
+  }
 
   return (
     <Swiper
@@ -58,7 +97,7 @@ export default Upload = () => {
             containerStyle={styles.submitContainer}
             buttonColor={colors.secondary}
             textColor={colors.primary}
-            onPress={() => alert('sending')}
+            onPress={() => uploadSymptoms()}
           >
             Submit
           </WideButton>
