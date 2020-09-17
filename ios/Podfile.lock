@@ -618,6 +618,8 @@ PODS:
     - React-jsi (= 0.63.2)
   - RNCMaskedView (0.1.10):
     - React
+  - RNCPicker (1.7.1):
+    - React
   - RNFBApp (8.4.2):
     - Firebase/CoreOnly (~> 6.30.0)
     - React
@@ -692,6 +694,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - "RNCPicker (from `../node_modules/@react-native-community/picker`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
@@ -789,6 +792,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
+  RNCPicker:
+    :path: "../node_modules/@react-native-community/picker"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
@@ -863,6 +868,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
+  RNCPicker: a2bf7bad059f23de52add203c3c5a3bc5b5239d8
   RNFBApp: 373cce42559cc7a9a42afc876746e3946de3e32e
   RNFBAuth: 701b29df3f364ef7b36992ad5e25628ce333ed89
   RNFBFirestore: 75c8fb40f3414f7b8158a260eec47dc3bbc0cfd0

@@ -13,7 +13,6 @@ import {
   GoogleSigninButton
 } from '@react-native-community/google-signin';
 
-import WideButton from '../Components/WideButton';
 import { colors } from '../assets/colors';
 
 GoogleSignin.configure({

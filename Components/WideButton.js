@@ -3,20 +3,25 @@ import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 import { colors } from '../assets/colors';
 
-export default WideButton = (props) => {
+export default WideButton = ({
+  containerStyle,
+  disabled,
+  onPress,
+  buttonColor,
+  textColor,
+  children
+}) => {
   return (
-    <View style={props.containerStyle}>
+    <View style={containerStyle}>
       <TouchableOpacity
-        disabled={props.disabled}
-        onPress={props.onPress}
+        disabled={disabled}
+        onPress={onPress}
         style={[
           styles.button,
-          { backgroundColor: props.disabled ? colors.gray : props.buttonColor }
+          { backgroundColor: disabled ? colors.gray : buttonColor }
         ]}
       >
-        <Text style={[styles.text, { color: props.textColor }]}>
-          {props.text}
-        </Text>
+        <Text style={[styles.text, { color: textColor }]}>{children}</Text>
       </TouchableOpacity>
     </View>
   );

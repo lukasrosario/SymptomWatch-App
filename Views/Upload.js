@@ -1,36 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import Swiper from 'react-native-swiper';
 
-import ThinButton from '../Components/ThinButton';
+import SurveyQuestion from '../Components/SurveyQuestion';
+import WideButton from '../Components/WideButton';
 
 import { colors } from '../assets/colors';
 
 export default Upload = () => {
+  const swiper = React.useRef(null);
+  const handleNext = () => {
+    if (swiper && swiper.current) {
+      swiper.current.scrollBy(1);
+    }
+  };
+
+  const [fever, setFever] = useState('');
+  const [cough, setCough] = useState('');
+  const [breath, setBreath] = useState('');
+  const [throat, setThroat] = useState('');
+
+  useEffect(() => {
+    if (fever != '') {
+      handleNext();
+    }
+  }, [fever, cough, breath]);
+
   return (
-    <View style={styles.container}>
-      <ThinButton
-        containerStyle={styles.logoutContainer}
-        text="Log Out"
-        buttonColor={colors.secondary}
-        textColor={colors.primary}
-        onPress={() => auth().signOut()}
-      />
-      <Text>lets get this bread</Text>
-    </View>
+    <Swiper
+      ref={swiper}
+      loop={false}
+      style={{}}
+      activeDotColor={colors.secondary}
+    >
+      <View style={styles.slide}>
+        <SurveyQuestion value={fever} setValue={setFever}>
+          Do you have a fever?
+        </SurveyQuestion>
+      </View>
+      <View style={styles.slide}>
+        <SurveyQuestion value={cough} setValue={setCough}>
+          Do you have a cough?
+        </SurveyQuestion>
+      </View>
+      <View style={styles.slide}>
+        <SurveyQuestion value={breath} setValue={setBreath}>
+          Are you experiencing shortness of breath?
+        </SurveyQuestion>
+      </View>
+      <View style={styles.slide}>
+        <SurveyQuestion value={throat} setValue={setThroat}>
+          Are you experiencing a sore throat?
+        </SurveyQuestion>
+        {throat !== '' && (
+          <WideButton
+            containerStyle={styles.submitContainer}
+            buttonColor={colors.secondary}
+            textColor={colors.primary}
+            onPress={() => alert('sending')}
+          >
+            Submit
+          </WideButton>
+        )}
+      </View>
+    </Swiper>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  slide: {
     flex: 1,
-    backgroundColor: colors.primary,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 24,
-    paddingVertical: 64
+    backgroundColor: colors.primary
   },
-  logoutContainer: {
-    alignSelf: 'flex-end'
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold'
+  },
+  submitContainer: {
+    position: 'absolute',
+    bottom: 128
   }
 });

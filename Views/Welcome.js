@@ -60,11 +60,12 @@ export default Welcome = (props) => {
           </View>
           <WideButton
             onPress={() => submitPhone()}
-            text="Continue"
             buttonColor={colors.secondary}
             textColor={colors.primary}
             disabled={!(phoneNumber.length == 10)}
-          />
+          >
+            Continue
+          </WideButton>
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
