@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 
-#CONFIG
+#config
 
 
 firebase = pyrebase.initialize_app(firebaseConfig)
@@ -75,8 +75,9 @@ def load():
 def get():
 	try:
 		if request.method == "POST":
-			users = db.child("users").get()
-			print(users.val())
+			users = db.child("users").get().val()
+			userstat = jsonify(users)
+			return userstat
 	except Exception as e:
 		print(e)
 		teet = jsonify({"message": "here"})
@@ -86,4 +87,3 @@ def get():
 
 if __name__ == "__main__":
 	app.run(debug=True)
-
