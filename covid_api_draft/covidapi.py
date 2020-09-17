@@ -74,7 +74,7 @@ def load():
 @app.route("/get" , methods=["GET", "POST"])
 def get():
 	try:
-		if request.method == "POST":
+		if request.method == "GET":
 			users = db.child("users").get().val()
 			userstat = jsonify(users)
 			return userstat
