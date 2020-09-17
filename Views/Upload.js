@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import Swiper from 'react-native-swiper';
 
 import Thanks from './Thanks';
+import Loading from './Loading';
 import SurveyQuestion from '../Components/SurveyQuestion';
 import WideButton from '../Components/WideButton';
 
@@ -12,6 +13,7 @@ import { colors } from '../assets/colors';
 
 export default Upload = () => {
   const [uploaded, setUploaded] = useState(false);
+  const [loading, setLoading] = useState(true);
   const uid = auth().currentUser.uid;
   firestore()
     .collection('Users')
@@ -28,6 +30,7 @@ export default Upload = () => {
       if (currentTime == lastUpload) {
         setUploaded(true);
       }
+      setLoading(false);
     });
 
   const swiper = React.useRef(null);
@@ -60,6 +63,10 @@ export default Upload = () => {
     });
     firestore().collection('Users').doc(uid).update({ lastUpload: timestamp });
     setUploaded(true);
+  }
+
+  if (loading) {
+    return <Loading />;
   }
 
   if (uploaded) {
@@ -108,6 +115,12 @@ export default Upload = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.primary
+  },
   slide: {
     flex: 1,
     justifyContent: 'center',

@@ -19,6 +19,11 @@ const AppStack = createBottomTabNavigator(
     }
   },
   {
+    navigationOptions: ({ navigation }) => ({
+      tabBarOnPress: (scene, jumpToIndex) => {
+        jumpToIndex(scene.index);
+      }
+    }),
     tabBarComponent: TabBar
   }
 );

@@ -3,6 +3,8 @@ import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
+import Loading from '../Views/Loading';
+
 import { colors } from '../assets/colors';
 
 export default AuthLoading = (props) => {
@@ -23,11 +25,7 @@ export default AuthLoading = (props) => {
       props.navigation.navigate('welcome');
     });
 
-  return (
-    <View style={styles.container}>
-      <ActivityIndicator color={colors.secondary} size="large" />
-    </View>
-  );
+  return <Loading />;
 };
 
 const styles = StyleSheet.create({
