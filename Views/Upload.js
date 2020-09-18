@@ -15,23 +15,30 @@ export default Upload = () => {
   const [uploaded, setUploaded] = useState(false);
   const [loading, setLoading] = useState(true);
   const uid = auth().currentUser.uid;
-  firestore()
-    .collection('Users')
-    .doc(uid)
-    .get()
-    .then((documentSnapshot) => {
-      const lastUpload = documentSnapshot._data.lastUpload
-        .toDate()
-        .toDateString();
-      const currentTime = firestore()
-        ._config.statics.Timestamp.now()
-        .toDate()
-        .toDateString();
-      if (currentTime == lastUpload) {
-        setUploaded(true);
-      }
-      setLoading(false);
-    });
+
+  useEffect(() => {
+    firestore()
+      .collection('Users')
+      .doc(uid)
+      .get()
+      .then((documentSnapshot) => {
+        try {
+          const lastUpload = documentSnapshot._data.lastUpload
+            .toDate()
+            .toDateString();
+          const currentTime = firestore()
+            ._config.statics.Timestamp.now()
+            .toDate()
+            .toDateString();
+          if (currentTime == lastUpload) {
+            setUploaded(true);
+          }
+        } catch {
+          setUploaded(false);
+        }
+        setLoading(false);
+      });
+  }, []);
 
   const swiper = React.useRef(null);
   const handleNext = () => {
