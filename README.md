@@ -44,3 +44,8 @@ Upon completetion, submit the survey. You can now check your survey history and 
 
 
 You may log back in at anytime to view your survey history, but the survey will only be available once daily.
+
+## Creators
+
+Lukas Rosario: lukasr@bu.edu
+Alex Rosenthal: arosee14@bu.edu
