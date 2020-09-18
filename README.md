@@ -1,6 +1,6 @@
-# SymptonTracker
+# Sympton Watch
 
-SymptomTracker is a mobile app designed to track and monitor COVID-19 releated symptoms. Users can login and update their symptoms on a daily basis. SymptomTracker also provides an admin WEB app to view and manage the collected symptom data.
+Symptom Watch is a mobile app designed to track and monitor COVID-19 releated symptoms. Users can login and update their symptoms on a daily basis. Symptom Watch also provides an admin WEB app to view and manage the collected symptom data.
 
 ## Getting Started
 
@@ -23,7 +23,8 @@ Navigate to the React Native project directory and run `react-native run-ios`
     $ cd ec463-miniproject
     $ react-native run-ios
     
-## Using SymptomTracker
+## Using Symptom Watch
+
 Begin at the homepage where you will sign in using your Google account.
 
 ![Simulator Screen Shot - iPhone 11 - 2020-09-18 at 01 21 27](https://user-images.githubusercontent.com/70490011/93559668-4c3c3180-f94e-11ea-996d-3f8f97d46448.png)
