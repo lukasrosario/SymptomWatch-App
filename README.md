@@ -30,6 +30,8 @@ Begin at the homepage where you will sign in using your Google account.
 
 You will then be brought to the Upload tab where you will be prompted to fill out the COVID-19 symptom survey.
 
+![Simulator Screen Shot - iPhone 11 - 2020-09-18 at 01 21 45](https://user-images.githubusercontent.com/70490011/93559760-83aade00-f94e-11ea-8f27-60a78ef2f470.png)
+
 Upon completetion, submit the survey. You can now check your survey history and then logout of the app.
 
 You may log back in at anytime to view your survey history, but the survey will only be available once daily.
