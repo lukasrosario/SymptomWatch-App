@@ -25,18 +25,18 @@ Navigate to the React Native project directory and run `react-native run-ios`
     
 ## Using Symptom Watch
 
-Begin at the homepage where you will sign in using your Google account.
+>Begin at the homepage where you will sign in using your Google account.
 
 ![Simulator Screen Shot - iPhone 11 - 2020-09-18 at 01 21 27](https://user-images.githubusercontent.com/70490011/93559668-4c3c3180-f94e-11ea-996d-3f8f97d46448.png)
 
 
-You will then be brought to the Upload tab where you willbe prompted to fill out the COVID-19 symptom survey.
+>You will then be brought to the Upload tab where you willbe prompted to fill out the COVID-19 symptom survey.
 
 
 ![Simulator Screen Shot - iPhone 11 - 2020-09-18 at 01 21 45](https://user-images.githubusercontent.com/70490011/93559760-83aade00-f94e-11ea-8f27-60a78ef2f470.png)
 
 
-Upon completetion, submit the survey. You can now check your survey history and then logout of the app.
+>Upon completetion, submit the survey. You can now check your survey history and then logout of the app.
 
 
 
@@ -44,7 +44,7 @@ Upon completetion, submit the survey. You can now check your survey history and 
 
 
 
-You may log back in at anytime to view your survey history, but the survey will only be available once daily.
+>You may log back in at anytime to view your survey history, but the survey will only be available once daily.
 
 ## Creators
 
