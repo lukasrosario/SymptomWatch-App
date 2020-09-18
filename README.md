@@ -24,7 +24,10 @@ Navigate to the React Native project directory and run `react-native run-ios`
     $ react-native run-ios
     
 ## Using SymptomTracker
-
 Begin at the homepage where you will sign in using your Google account.
 
-You will then be brought 
+You will then be brought to the Upload tab where you will be prompted to fill out the COVID-19 symptom survey.
+
+Upon completetion, submit the survey. You can now check your survey history and then logout of the app.
+
+You may log back in at anytime to view your survey history, but the survey will only be available once daily.
