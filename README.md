@@ -48,5 +48,4 @@ Navigate to the React Native project directory and run `react-native run-ios`
 
 ## Creators
 
-Lukas Rosario: lukasr@bu.edu
-Alex Rosenthal: arosee14@bu.edu
+Lukas Rosario: lukasr@bu.edu and Alex Rosenthal: arosee14@bu.edu
